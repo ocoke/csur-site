@@ -15,7 +15,7 @@ hero:
     #   link: /api-examples
 
 features:
-  - title: Based on Nitro
+  - title: Based on Nuxt
     icon: 🌎
     details: CranSurvey can be deployed on a serverless platform and connected to different types of databases.
   - title: Open Source
