@@ -15,7 +15,7 @@ hero:
     #   link: /api-examples
 
 features:
-  - title: 基于 Nitro
+  - title: 基于 Nuxt
     icon: 🌎
     details: CranSurvey 可以部署在无服务器平台上并连接到不同类型的数据库。
   - title: 开源
