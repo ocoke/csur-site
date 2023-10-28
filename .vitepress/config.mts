@@ -6,6 +6,7 @@ export default defineConfig({
   description: "CranSurvey is a tool for the website manager to add a quick survey-collecting prompt to their website in a few seconds. It's based on Nitro, which means you can deploy CranSurvey on a serverless platform.",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    siteTitle: 'CranSurvey',
     // nav: [
     //   { text: 'Home', link: '/' },
     //   { text: 'Examples', link: '/markdown-examples' }
