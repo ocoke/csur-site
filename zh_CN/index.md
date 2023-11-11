@@ -8,8 +8,8 @@ hero:
   tagline: 创建调查、收集数据并分析结果。
   actions:
     - theme: brand
-      text: 即将推出
-      # link: /markdown-examples
+      text: 现在开始
+      link: /zh_CN/guide/start.html
     # - theme: alt
     #   text: API Examples
     #   link: /api-examples

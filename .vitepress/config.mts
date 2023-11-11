@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "CranSurvey",
   description: "CranSurvey is a tool for the website manager to add a quick survey-collecting prompt to their website in a few seconds. It's based on Nitro, which means you can deploy CranSurvey on a serverless platform.",
+  lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     siteTitle: 'CranSurvey',
@@ -12,15 +13,26 @@ export default defineConfig({
     //   { text: 'Examples', link: '/markdown-examples' }
     // ],
 
-    // sidebar: [
-    //   {
-    //     text: 'Examples',
-    //     items: [
-    //       { text: 'Markdown Examples', link: '/markdown-examples' },
-    //       { text: 'Runtime API Examples', link: '/api-examples' }
-    //     ]
-    //   }
-    // ],
+    sidebar: [
+      {
+        text: 'Guide',
+        items: [
+          { text: 'Getting Started', link: '/guide/start.html' },
+          { text: 'Configure the Database', link: '/database.html' },
+          { text: 'Sign up to CranSurvey', link: '/guide/signup.html' },
+          { text: 'Sign in to CranSurvey', link: '/guide/signin.html' },
+
+
+        ]
+      },
+      {
+        text: 'Reference',
+        items: [
+          { text: 'Demo Site', link: '/demo.html' },
+          { text: 'API', link: '/api.html' }
+        ]
+      },
+    ],
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/ocoke/CranSurvey' }
@@ -28,6 +40,9 @@ export default defineConfig({
     footer: {
         message: 'Released under the MIT License.<br>The page was translated by Microsoft Translator and other contributors.',
         copyright: '© 2023 <a href="https://github.com/ocoke/CranSurvey">CranSurvey</a>'
+    },
+    search: {
+      provider: 'local',
     },
   },
   locales: {
@@ -51,4 +66,5 @@ export default defineConfig({
       link: 'https://github.com/ocoke/CranSurvey/tree/master/locales',
     },
   },
+  
 })

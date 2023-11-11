@@ -8,7 +8,8 @@ hero:
   tagline: Creating surveys, Collecting data and analyzing results.
   actions:
     - theme: brand
-      text: Coming Soon
+      text: Get Started
+      link: /guide/start.html
       # link: /markdown-examples
     # - theme: alt
     #   text: API Examples
