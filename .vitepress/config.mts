@@ -21,7 +21,7 @@ export default defineConfig({
           { text: 'Configure the Database', link: '/database.html' },
           { text: 'Sign up to CranSurvey', link: '/guide/signup.html' },
           { text: 'Sign in to CranSurvey', link: '/guide/signin.html' },
-
+          { text: 'Create a Survey', link: '/guide/create.html' },
 
         ]
       },
