@@ -42,14 +42,29 @@ If you're using advanced survey, you need to click the `Add` button to add it to
 
 You can set the maximum and minimum length of the answers (characters).
 
+![image](https://github.com/ocoke/csur-site/assets/71591824/f2f2e880-edfe-48db-aef7-af4ae7a74da1)
+
+
 ### Multiple Choice / Dropdown / Checkboxes
 
 You'll need to add your options here.
+
+![image](https://github.com/ocoke/csur-site/assets/71591824/4e53793e-9949-4471-8f77-ba8f590333fb)
+
 
 ### File Upload
 
 You can set the specific types of files that are allowed.
 
+![image](https://github.com/ocoke/csur-site/assets/71591824/38aab540-e7f2-424c-ba21-a39db0844813)
+
+
 ### Date
 
 You can set the start and the end of the date that you collect.
+
+![image](https://github.com/ocoke/csur-site/assets/71591824/d879c0c3-041d-43a0-b4ca-93faabb803a2)
+
+![image](https://github.com/ocoke/csur-site/assets/71591824/27c64c1c-7b04-4c94-a484-db1e4b329348)
+
+
