@@ -67,4 +67,16 @@ You can set the start and the end of the date that you collect.
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/27c64c1c-7b04-4c94-a484-db1e4b329348)
 
+## Site Configure
+
+![image](https://github.com/ocoke/csur-site/assets/71591824/25018c98-7f12-4ca3-9de1-dea76083ca3e)
+
+We have reserved support for our web plugins.
+
+1. Domain: The domains to which this survey applies.
+2. Position: Choose a position for the prompt window of the web plugins.
+3. Display Priority: Enter a number, The larger the number, the higher the priority of showing.
+4. Webhook: The Webhook URL for the survey. We'll push Webhook message when we get a new response.
+
+
 
