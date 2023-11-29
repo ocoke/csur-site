@@ -15,6 +15,7 @@ hero:
     #   text: API Examples
     #   link: /api-examples
 
+    
 features:
   - title: Based on Nuxt
     icon: 🌎
