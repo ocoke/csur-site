@@ -1,76 +1,76 @@
 ---
-title: Create a Survey
+title: 調査の作成
 ---
 
-# Create a Survey
+# 調査の作成
 
-First, you need to go to the dashboard of your CranSurvey site.
+まず、CranSurveyサイトのダッシュボードに移動する必要があります。
 
-Then, click on the sidebar and go to `Surveys`.
+次に、サイドバーをクリックして、\[アンケート]に移動します。
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/edd1366e-1869-4b44-af5e-ef62909b5a1b)
 
-Click the `New Survey` which on the top of the page to create a survey.
+ページ上部の「新規アンケート」をクリックして、アンケートを作成します。
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/31254486-8987-4355-99e3-11fc240015f8)
 
-## Layout
+## レイアウト
 
-First, you need to choose a layout for your survey.
+まず、アンケートのレイアウトを選択する必要があります。
 
-There are three layouts for your survey, they are `Simple`, `Advanced` and `Prompt`.
+アンケートには、「シンプル」、「アドバンスト」、「プロンプト」の3つのレイアウトがあります。
 
-- `Simple`: Simple Survey only includes one question, if you want to add it to your website, users don't need to open another prompt window to answer your questions.
-- `Advanced`: You can add several questions here and share them with a link easily. If you want to add it to your website, users will still stay on the page but there will be a prompt window for users to answer them.
-- `Prompt`: There are no questions and the page will only include a paragraph of text.
+- 「シンプル」: シンプルアンケートには質問が 1 つしか含まれていないため、その質問を Web サイトに追加する場合、ユーザーは質問に回答するために別のプロンプト ウィンドウを開く必要はありません。
+- 「上級者向け」:ここにいくつかの質問を追加して、リンクで簡単に共有できます。 Webサイトに追加する場合、ユーザーはページにとどまりますが、ユーザーが回答するためのプロンプトウィンドウが表示されます。
+- 'プロンプト': 質問はなく、ページにはテキストの段落のみが含まれます。
 
-## Adding a Question
+## 質問を追加する
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/e7fc5883-a50c-44e0-bc1e-ba4332e8e65b)
 
-1. Question: This is the title of the question.
-2. Prompt: This is the description of your question.
-3. Type: There are several question types, choose according to your needs. (Short Answer, Paragraph, Multiple Choice, Checkboxes, Dropdown, File and Date).
-4. Answer Validate: Different types of questions have different rules and options.
-5. Placeholder: The placeholder for the text boxes.
+1. 質問: これは質問のタイトルです。
+2. プロンプト: これは質問の説明です。
+3. タイプ:いくつかの質問タイプがありますので、必要に応じて選択してください。 (短い答え、段落、多肢選択式、チェックボックス、ドロップダウン、ファイル、日付)。
+4. 回答の検証: 質問の種類が異なれば、ルールや選択肢も異なります。
+5. プレースホルダー: テキストボックスのプレースホルダー。
 
-If you're using advanced survey, you need to click the `Add` button to add it to your questions list.
+高度なアンケートを使用している場合は、\[追加]ボタンをクリックして質問リストに追加する必要があります。
 
-## Answer Validate
+## 回答検証
 
-### Short Answer / Paragraph
+### ショートアンサー/段落
 
-You can set the maximum and minimum length of the answers (characters).
+解答の最大長と最小長(文字数)を設定できます。
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/f2f2e880-edfe-48db-aef7-af4ae7a74da1)
 
-### Multiple Choice / Dropdown / Checkboxes
+### 複数選択 / ドロップダウン / チェックボックス
 
-You'll need to add your options here.
+ここでオプションを追加する必要があります。
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/4e53793e-9949-4471-8f77-ba8f590333fb)
 
-### File Upload
+### ファイルのアップロード
 
-You can set the specific types of files that are allowed.
+許可する特定の種類のファイルを設定できます。
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/38aab540-e7f2-424c-ba21-a39db0844813)
 
-### Date
+### 日付
 
-You can set the start and the end of the date that you collect.
+収集する日付の開始と終了を設定できます。
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/d879c0c3-041d-43a0-b4ca-93faabb803a2)
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/27c64c1c-7b04-4c94-a484-db1e4b329348)
 
-## Site Configure
+## サイト構成
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/25018c98-7f12-4ca3-9de1-dea76083ca3e)
 
-We have reserved support for our web plugins.
+Webプラグインのサポートを予約しています。
 
-1. Domain: The domains to which this survey applies.
-2. Position: Choose a position for the prompt window of the web plugins.
-3. Display Priority: Enter a number, The larger the number, the higher the priority of showing.
-4. Webhook: The Webhook URL for the survey. We'll push Webhook message when we get a new response.
+1. ドメイン: この調査が適用されるドメイン。
+2. 位置: Webプラグインのプロンプトウィンドウの位置を選択します。
+3. 表示優先度:数値を入力し、数値が大きいほど表示優先度が高くなります。
+4. Webhook: アンケートの Webhook URL。 新しい応答を受け取ったら、Webhook メッセージをプッシュします。
