@@ -1,76 +1,76 @@
 ---
-title: Create a Survey
+title: 설문조사 만들기
 ---
 
-# Create a Survey
+# 설문조사 만들기
 
-First, you need to go to the dashboard of your CranSurvey site.
+먼저 CranSurvey 사이트의 대시보드로 이동해야 합니다.
 
-Then, click on the sidebar and go to `Surveys`.
+그런 다음 사이드바를 클릭하고 '설문조사'로 이동합니다.
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/edd1366e-1869-4b44-af5e-ef62909b5a1b)
 
-Click the `New Survey` which on the top of the page to create a survey.
+페이지 상단의 '새 설문조사'를 클릭하여 설문조사를 만듭니다.
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/31254486-8987-4355-99e3-11fc240015f8)
 
-## Layout
+## 레이아웃
 
-First, you need to choose a layout for your survey.
+먼저 설문조사의 레이아웃을 선택해야 합니다.
 
-There are three layouts for your survey, they are `Simple`, `Advanced` and `Prompt`.
+설문조사에는 '단순', '고급' 및 '프롬프트'의 세 가지 레이아웃이 있습니다.
 
-- `Simple`: Simple Survey only includes one question, if you want to add it to your website, users don't need to open another prompt window to answer your questions.
-- `Advanced`: You can add several questions here and share them with a link easily. If you want to add it to your website, users will still stay on the page but there will be a prompt window for users to answer them.
-- `Prompt`: There are no questions and the page will only include a paragraph of text.
+- '단순': 단순 설문조사에는 하나의 질문만 포함되며, 웹사이트에 추가하려는 경우 사용자가 질문에 답변하기 위해 다른 프롬프트 창을 열 필요가 없습니다.
+- '고급': 여기에 여러 질문을 추가하고 링크로 쉽게 공유할 수 있습니다. 웹사이트에 추가하려는 경우 사용자는 여전히 페이지에 남아 있지만 사용자가 응답할 수 있는 프롬프트 창이 표시됩니다.
+- '프롬프트': 질문이 없으며 페이지에 텍스트 단락만 포함됩니다.
 
-## Adding a Question
+## 질문 추가
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/e7fc5883-a50c-44e0-bc1e-ba4332e8e65b)
 
-1. Question: This is the title of the question.
-2. Prompt: This is the description of your question.
-3. Type: There are several question types, choose according to your needs. (Short Answer, Paragraph, Multiple Choice, Checkboxes, Dropdown, File and Date).
-4. Answer Validate: Different types of questions have different rules and options.
-5. Placeholder: The placeholder for the text boxes.
+1. 질문: 질문의 제목입니다.
+2. 프롬프트: 질문에 대한 설명입니다.
+3. 유형: 여러 질문 유형이 있으며 필요에 따라 선택하십시오. (단답형, 단락, 객관식, 확인란, 드롭다운, 파일 및 날짜).
+4. 답변 유효성 검사: 질문 유형에 따라 규칙과 옵션이 다릅니다.
+5. 자리 표시자: 텍스트 상자의 자리 표시자입니다.
 
-If you're using advanced survey, you need to click the `Add` button to add it to your questions list.
+고급 설문조사를 사용하는 경우 '추가' 버튼을 클릭하여 질문 목록에 추가해야 합니다.
 
-## Answer Validate
+## 답변 유효성 검사
 
-### Short Answer / Paragraph
+### 단답형/단락
 
-You can set the maximum and minimum length of the answers (characters).
+답변(문자)의 최대 및 최소 길이를 설정할 수 있습니다.
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/f2f2e880-edfe-48db-aef7-af4ae7a74da1)
 
-### Multiple Choice / Dropdown / Checkboxes
+### 객관식/드롭다운/확인란
 
-You'll need to add your options here.
+여기에 옵션을 추가해야 합니다.
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/4e53793e-9949-4471-8f77-ba8f590333fb)
 
-### File Upload
+### 파일 업로드
 
-You can set the specific types of files that are allowed.
+허용되는 특정 파일 형식을 설정할 수 있습니다.
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/38aab540-e7f2-424c-ba21-a39db0844813)
 
-### Date
+### 날짜
 
-You can set the start and the end of the date that you collect.
+수집하는 날짜의 시작과 끝을 설정할 수 있습니다.
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/d879c0c3-041d-43a0-b4ca-93faabb803a2)
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/27c64c1c-7b04-4c94-a484-db1e4b329348)
 
-## Site Configure
+## 사이트 구성
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/25018c98-7f12-4ca3-9de1-dea76083ca3e)
 
-We have reserved support for our web plugins.
+웹 플러그인에 대한 지원을 예약했습니다.
 
-1. Domain: The domains to which this survey applies.
-2. Position: Choose a position for the prompt window of the web plugins.
-3. Display Priority: Enter a number, The larger the number, the higher the priority of showing.
-4. Webhook: The Webhook URL for the survey. We'll push Webhook message when we get a new response.
+1. 도메인: 이 설문 조사가 적용되는 도메인입니다.
+2. 위치: 웹 플러그인의 프롬프트 창에 대한 위치를 선택합니다.
+3. 표시 우선 순위: 숫자를 입력하고, 숫자가 클수록 표시 우선 순위가 높습니다.
+4. 웹훅: 설문조사의 웹훅 URL입니다. 새로운 응답을 받으면 웹훅 메시지를 푸시합니다.
