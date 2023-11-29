@@ -4,15 +4,15 @@ title: Getting Started
 
 # Getting Started
 
-CranSurvey v1 是基于 Nuxt 开发的。 它可以部署在无服务器平台上并连接不同类型的数据库。 It can be deployed on a serverless platform and connected to different types of databases.
+CranSurvey v1 is developed based on Nuxt. It can be deployed on a serverless platform and connected to different types of databases.
 
-[我们提供了一个演示网站供您试用 CranSurvey。](/demo.html)
+[We provided a demo site for you to try out CranSurvey.](/demo.html)
 
-## 一键部署
+## One Click Deploy
 
 This method is good for the serverless platforms that can deploy Nuxt App directly, such as [Vercel](https://vercel.com/), [Netlify](https://www.netlify.com/), Cloudflare Pages, etc.
 
-对于数据库部分，您需要在平台的仪表板中设置环境变量。 变量是： The variables are:
+For the database part, you need to set the environment variables in the platform's dashboard. The variables are:
 
 - `db_name`: The type of the of the database.
 - `db_config`: The configuration of the database, in JSON format.
@@ -27,21 +27,21 @@ For more details, please see the part of [Configure the Database](/database.html
 
 [![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/ocoke/CranSurvey)
 
-## 手动部署
+## Manual Deploy
 
-首先，您需要克隆存储库：
+First, you need to clone the repository:
 
 ```bash
 git clone https://github.com/ocoke/CranSurvey.git
 ```
 
-然后，安装依赖项：
+Then, install the dependencies:
 
 ```bash
 yarn install
 ```
 
-然后，您需要设置用于构建的环境变量，因为不同的平台需要不同的格式和类型的文件。
+Then, you need to set an environment variable for building because different platforms need different formats and types of files.
 
 ::: tip
 The presets of the server providers can be found in the link below:
@@ -65,14 +65,14 @@ The presets of the server providers can be found in the link below:
 - [Vercel](https://nitro.unjs.io/deploy/providers/vercel)
   :::
 
-我们需要改变开发预设，
+And we need to change the development preset,
 
-例如，如果要部署到 Vercel，则需要将环境变量设置为：
+for example, if you want to deploy to Vercel, you need to set the environment variable as:
 
 ```bash
 NITRO_PRESET=vercel yarn build
 ```
 
-然后，您可以按照 Nitro 的文档将 `dist` 文件夹部署到您想要的 Serverless 平台。
+Then, you can deploy the `dist` folder to the serverless platform you want by following the documents of Nitro.
 
-享受您全新的 CranSurvey 网站！
+Enjoy your brand new CranSurvey site!
