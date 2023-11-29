@@ -1,154 +1,154 @@
 ---
-title: API Docs
+title: API ドキュメント
 ---
 
-# API Docs
+# API ドキュメント
 
-## Users
+## ユーザー
 
-### Sign up
+### サインアップ
 
 :::tip
-Before you create a new survey, you should sign up for an account for CranSurvey. By the way, the username and password are stored in your database. So the account can't login with other CranSurvey sites in different databases.
+新しいアンケートを作成する前に、CranSurveyのアカウントにサインアップする必要があります。 ちなみに、ユーザー名とパスワードはデータベースに保存されています。 そのため、アカウントは異なるデータベース内の他のCranSurveyサイトにログインできません。
 :::
 
-**Request:**
+**依頼：**
 
 ```jsonc
-// POST /api/usr/sign-up
+/api/usr/sign-upを投稿する
 {
-    // this is your user id,
-    "id": "test_user",
-    // your password, should be encryped.
+    これはあなたのユーザーIDです。
+    "id": "test_user"、
+    あなたのパスワードは、暗号化されるべきです。
     "pwd": "test_only"
 }
 ```
 
-**Body:**
+**体：**
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success.",
-    // if this is the first user in the database, CranSurvey will init tables automatically,
-    // or it will be `false`.
-    "init": true,
-    // the token in JWT format.
+    「コード」:0、
+    "msg": "成功しました。
+    これがデータベースの最初のユーザーである場合、CranSurveyは自動的にテーブルを初期化します。
+    または「false」になります。
+    "init":true、
+    JWT 形式のトークン。
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
 }
 ```
 
-### Sign in
+### サインイン
 
-> Get a token by providing username and password.
+> ユーザー名とパスワードを入力してトークンを取得します。
 
-**Request:**
+**依頼：**
 
 ```jsonc
-// POST /api/usr/sign-in
+POST /api/usr/sign-in
 {
-    // this is your user id,
-    "id": "test_user",
-    // your password, should be encryped.
+    これはあなたのユーザーIDです。
+    "id": "test_user"、
+    あなたのパスワードは、暗号化されるべきです。
     "pwd": "test_only"
 }
 ```
 
-**Response:**
+**応答：**
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success.",
-    // token in JWT format.
+    「コード」:0、
+    "msg": "成功しました。
+    トークンを JWT 形式で作成します。
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
 }
 ```
 
-### Checking Token
+### トークンの確認
 
-> Check if the token is valid.
+> トークンが有効かどうかを確認します。
 
-**Request:**
+**依頼：**
 
 ```jsonc
-// POST /api/usr/token
+/api/usr/tokenをPOSTします
 {
-    // token in JWT format.
+    トークンを JWT 形式で作成します。
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
 }
 ```
 
-**Response:**
+**応答：**
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success."
+    「コード」:0、
+    "msg": "成功しました。
 }
 ```
 
-## Surveys
+## 調査
 
-### Create / Update Survey
+### アンケートの作成/更新
 
-> Create a new survey or update an existing survey.
+> 新しい調査を作成するか、既存の調査を更新します。
 
-**Request:**
+**依頼：**
 
 ```jsonc
 POST /api/survey/create
 {
-    // token in JWT format. (required)
+    トークンを JWT 形式で作成します。(必須)
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o",
-    // title of the survey. (required)
-    "title": "Test Survey",
-    // description of the survey. (required)
-    "description": "This is a test survey.",
-    // questions of the survey.
-    "questions": [
+    調査のタイトル。(必須)
+    "title": "テストアンケート",
+    調査の説明。(必須)
+    "description": "これはテストアンケートです。
+    調査の質問。
+    "質問": [
         {
-            // question id, should be unique and integer. (required)
-            "id": 0,
-            // question type. (required)
-            "type": "short_answer",
-            // question options.
-            "validate": {
-                "min": 1,
-                "max": 2048
+            質問IDは、一意で整数である必要があります。(必須)
+            「id」:0、
+            質問タイプ。(必須)
+            "タイプ": "short_answer"、
+            質問の選択肢。
+            "検証":{
+                「分」:1、
+                「最大」:2048
             },
-            // question title. (required)
-            "title": "Test Question",
-            // question prompt.
-            "prompt": "This is a test question.",
-            // required / optional
-            "required": true,
-            "options": {
-                "optionsData": []
+            質問のタイトル。(必須)
+            "title": "テスト問題",
+            質問プロンプト。
+            "prompt": "これはテスト問題です。
+            必須/オプション
+            "必須":true、
+            「オプション」:{
+                "optionsData":[]
             }
         }
     ],
-    // type of survey, simple / advanced / prompt (required)
-    "type": "simple",
-    // site configs
-    "site": {
-        // leave blank for global enabled
-        "domain": ["example.com", "example.org"],
-        // the priority for the prompt window
-        "priority": 1,
-        // the position of the prompt window, bottom_right / bottom_left / bottom_banner
+    調査の種類、簡易/詳細/プロンプト(必須)
+    "type": "シンプル",
+    サイト構成
+    「サイト」:{
+        グローバル有効の場合は空白のままにします
+        "ドメイン": ["example.com", "example.org"],
+        プロンプトウィンドウの優先度
+        「優先度」:1、
+        プロンプトウィンドウの位置、bottom_right / bottom_left / bottom_banner
         "promptWindowPosition": "bottom_right"
     }
 }
 ```
 
-- Response:
+- 応答：
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success.",
-    // the unique id of the survey.
+    「コード」:0、
+    "msg": "成功しました。
+    アンケートの一意の ID。
     "uid": "4596870a-07f1-4113-b52d-6aa49dd2d6d9"
 }
 ```
