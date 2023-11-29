@@ -1,5 +1,5 @@
 files:
-  - source: /
+  - source: /**/**.md
     ignore:
       - /%locale_with_underscore%
       - /.vitepress/
