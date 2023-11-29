@@ -6,7 +6,7 @@ title: Sign in to CranSurvey
 
 After you sign up for an account, you can sign in to CranSurvey with your username and password.
 
-By the way, the username and password are stored in your database. So the account can't sign in with other CranSurvey sites in different databases.
+順便說一句，使用者名和密碼存儲在您的資料庫中。 So the account can't sign in with other CranSurvey sites in different databases.
 
 Visit: `https://[your-domain]/sign-in` to sign in.
 
