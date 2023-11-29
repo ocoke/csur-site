@@ -1,76 +1,76 @@
 ---
-title: Create a Survey
+title: Criar um questionário
 ---
 
-# Create a Survey
+# Criar um questionário
 
-First, you need to go to the dashboard of your CranSurvey site.
+Primeiro, você precisa ir para o painel do seu site CranSurvey.
 
-Then, click on the sidebar and go to `Surveys`.
+Em seguida, clique na barra lateral e vá em 'Pesquisas'.
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/edd1366e-1869-4b44-af5e-ef62909b5a1b)
 
-Click the `New Survey` which on the top of the page to create a survey.
+Clique no botão "Novo questionário" que está na parte superior da página para criar um questionário.
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/31254486-8987-4355-99e3-11fc240015f8)
 
 ## Layout
 
-First, you need to choose a layout for your survey.
+Primeiro, você precisa escolher um layout para seu questionário.
 
-There are three layouts for your survey, they are `Simple`, `Advanced` and `Prompt`.
+Existem três layouts para o seu questionário, eles são 'Simples', 'Avançado' e 'Prompt'.
 
-- `Simple`: Simple Survey only includes one question, if you want to add it to your website, users don't need to open another prompt window to answer your questions.
-- `Advanced`: You can add several questions here and share them with a link easily. If you want to add it to your website, users will still stay on the page but there will be a prompt window for users to answer them.
-- `Prompt`: There are no questions and the page will only include a paragraph of text.
+- 'Simples': o Simple Survey inclui apenas uma pergunta, se você quiser adicioná-la ao seu site, os usuários não precisam abrir outra janela de prompt para responder às suas perguntas.
+- 'Avançado': Você pode adicionar várias perguntas aqui e compartilhá-las com um link facilmente. Se você quiser adicioná-lo ao seu site, os usuários ainda permanecerão na página, mas haverá uma janela de prompt para que os usuários os respondam.
+- 'Prompt': Não há perguntas e a página incluirá apenas um parágrafo de texto.
 
-## Adding a Question
+## Adicionando uma pergunta
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/e7fc5883-a50c-44e0-bc1e-ba4332e8e65b)
 
-1. Question: This is the title of the question.
-2. Prompt: This is the description of your question.
-3. Type: There are several question types, choose according to your needs. (Short Answer, Paragraph, Multiple Choice, Checkboxes, Dropdown, File and Date).
-4. Answer Validate: Different types of questions have different rules and options.
-5. Placeholder: The placeholder for the text boxes.
+1. Pergunta: Este é o título da pergunta.
+2. Prompt: Esta é a descrição da sua pergunta.
+3. Tipo: Existem vários tipos de perguntas, escolha de acordo com suas necessidades. (Resposta curta, parágrafo, múltipla escolha, caixas de seleção, lista suspensa, arquivo e data).
+4. Validação de resposta: diferentes tipos de perguntas têm regras e opções diferentes.
+5. Espaço reservado: o espaço reservado para as caixas de texto.
 
-If you're using advanced survey, you need to click the `Add` button to add it to your questions list.
+Se você estiver usando o questionário avançado, precisará clicar no botão 'Adicionar' para adicioná-lo à sua lista de perguntas.
 
-## Answer Validate
+## Validação de Resposta
 
-### Short Answer / Paragraph
+### Resposta Curta / Parágrafo
 
-You can set the maximum and minimum length of the answers (characters).
+Você pode definir o comprimento máximo e mínimo das respostas (caracteres).
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/f2f2e880-edfe-48db-aef7-af4ae7a74da1)
 
-### Multiple Choice / Dropdown / Checkboxes
+### Múltipla escolha / Dropdown / Caixas de seleção
 
-You'll need to add your options here.
+Você precisará adicionar suas opções aqui.
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/4e53793e-9949-4471-8f77-ba8f590333fb)
 
-### File Upload
+### Upload de arquivos
 
-You can set the specific types of files that are allowed.
+Você pode definir os tipos específicos de arquivos permitidos.
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/38aab540-e7f2-424c-ba21-a39db0844813)
 
-### Date
+### Data
 
-You can set the start and the end of the date that you collect.
+Você pode definir o início e o fim da data coletada.
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/d879c0c3-041d-43a0-b4ca-93faabb803a2)
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/27c64c1c-7b04-4c94-a484-db1e4b329348)
 
-## Site Configure
+## Configuração do site
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/25018c98-7f12-4ca3-9de1-dea76083ca3e)
 
-We have reserved support for our web plugins.
+Nós reservamos suporte para nossos plugins web.
 
-1. Domain: The domains to which this survey applies.
-2. Position: Choose a position for the prompt window of the web plugins.
-3. Display Priority: Enter a number, The larger the number, the higher the priority of showing.
-4. Webhook: The Webhook URL for the survey. We'll push Webhook message when we get a new response.
+1. Domínio: Os domínios aos quais esta pesquisa se aplica.
+2. Posição: Escolha uma posição para a janela de prompt dos plug-ins da web.
+3. Prioridade de exibição: insira um número, quanto maior o número, maior a prioridade de exibição.
+4. Webhook: A URL do Webhook para a pesquisa. Enviaremos uma mensagem Webhook quando recebermos uma nova resposta.
