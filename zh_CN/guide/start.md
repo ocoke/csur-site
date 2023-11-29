@@ -2,7 +2,7 @@
 title: Getting Started
 ---
 
-# Getting Started
+# 开始
 
 CranSurvey v1 是基于 Nuxt 开发的。 它可以部署在无服务器平台上并连接不同类型的数据库。 It can be deployed on a serverless platform and connected to different types of databases.
 
