@@ -1,19 +1,13 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
-
 hero:
-  name: "CranSurvey"
-  text: "為您的資料收集提供支援"
+  name: CranSurvey
+  text: Powers your data-collection
   tagline: 建立調查、收集數據並分析結果。
   actions:
     - theme: brand
       text: 現在開始
       link: /guide/start.html
-    # - theme: alt
-    #   text: API Examples
-    #   link: /api-examples
-
 features:
   - title: 基於 Nuxt
     icon: 🌎
@@ -25,4 +19,3 @@ features:
     icon: 🗒️
     details: CranSurvey 是個人/組織的入門選擇，您可以透過將其與您自己的網站整合來收集資料。
 ---
-
