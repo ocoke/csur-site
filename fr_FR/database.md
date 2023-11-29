@@ -1,122 +1,122 @@
 ---
-title: Configure the Database
+title: Configurer la base de données
 ---
 
-# Configure the Database
+# Configurer la base de données
 
-There are two environment variables that matter to database configuration, which are `db_name` and `db_config`.
+Il existe deux variables d’environnement importantes pour la configuration de la base de données, à savoir 'db\_name' et 'db\_config'.
 
-The `db_name` means the name of the type of the database, the `db_config` means the configuration of it.
+Le 'db\_name' signifie le nom du type de la base de données, le 'db\_config' signifie la configuration de celle-ci.
 
-CranSurvey uses `unstorage` to connect to your database, almost every database configuration option can be used.
+CranSurvey utilise 'unstorage' pour se connecter à votre base de données, presque toutes les options de configuration de base de données peuvent être utilisées.
 
-## Memory
+## Mémoire
 
-> [Memory Driver](https://unstorage.unjs.io/drivers/memory) is the default database and it doesn't need any configuration.
+> \[Pilote de mémoire] (https\://unstorage.unjs.io/drivers/memory) est la base de données par défaut et n’a besoin d’aucune configuration.
 
-However, it keeps data in memory using [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), so the data may be lost when the memory is cleared.
+Cependant, il conserve les données en mémoire à l’aide de [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), de sorte que les données peuvent être perdues lorsque la mémoire est effacée.
 
-Memory Driver can't be used in production mode.
+Le pilote de mémoire ne peut pas être utilisé en mode production.
 
 ```env
-db_name=memory
+db_name=mémoire
 db_config={}
 ```
 
-## Node.js Filesystem
+## Système de fichiers Node.js
 
-> [Node.js Filesystem](https://unstorage.unjs.io/drivers/fs).
+> \[Système de fichiers Node.js] (https\://unstorage.unjs.io/drivers/fs).
 >
-> Maps data to the real filesystem using directory structure for nested keys. Supports watching using [chokidar](https://github.com/paulmillr/chokidar).
-> This driver implements meta for each key including `mtime` (last modified time), `atime` (last access time), and size (file size) using `fs.stat`.
+> Mappe les données au système de fichiers réel à l’aide d’une structure de répertoires pour les clés imbriquées. Prend en charge le visionnage à l’aide de [chokidar](https://github.com/paulmillr/chokidar).
+> Ce pilote implémente meta pour chaque clé, y compris 'mtime' (heure de la dernière modification), 'atime' (heure du dernier accès) et size (taille du fichier) à l’aide de 'fs.stat'.
 
 Options:
 
-- `base`: Base directory to isolate operations on this directory
-- `ignore`: Ignore patterns for watch
+- 'base' : Répertoire de base pour isoler les opérations sur ce répertoire
+- 'ignore' : Ignorer les modèles pour la surveillance
 
 ```env
 db_name=fs
-db_config={"base": "./.tmp"}
+db_config={"base » : « ./.tmp"}
 ```
 
-## Redis
+## Redis (en anglais)
 
 > [Redis](https://unstorage.unjs.io/drivers/redis).
 >
-> Store data in a [Redis](https://redis.com/) storage using [ioredis](https://github.com/luin/ioredis).
+> Stocker les données dans un fichier [Redis](https://redis.com/) stockage à l’aide de [ioredis](https://github.com/luin/ioredis).
 
 Options:
 
-- `base`: Optional prefix to use for all keys. Can be used for namespacing. Has to be used as hastag prefix for redis cluster mode.
-- `url`: Url to use for connecting to redis. Takes precedence over host option. Has the format `redis://<REDIS_USER>:<REDIS_PASSWORD>@<REDIS_HOST>:<REDIS_PORT>`.
-- `cluster`: List of redis nodes to use for cluster mode. Takes precedence over url and host options.
-- `clusterOptions`: Options to use for cluster mode.
-- `ttl`: Default TTL for all items in seconds.
+- 'base' : préfixe facultatif à utiliser pour toutes les touches. Peut être utilisé pour l’espacement des noms. Doit être utilisé comme préfixe hastag pour le mode cluster redis.
+- 'url' : Url à utiliser pour se connecter à redis. Est prioritaire sur l’option hôte. Le format 'redis\://\<REDIS\_USER>:\<REDIS\_PASSWORD>@\<REDIS\_HOST>:\<REDIS\_PORT>'.
+- 'cluster' : Liste des noeuds redis à utiliser pour le mode cluster. Est prioritaire sur les options d’URL et d’hôte.
+- 'clusterOptions' : Options à utiliser pour le mode cluster.
+- 'ttl' : TTL par défaut pour tous les éléments en secondes.
 
 ```env
 db_name=redis
-db_config={"base": "csur", "url": "redis://<REDIS_USER>:<REDIS_PASSWORD>@<REDIS_HOST>:<REDIS_PORT>"}
+db_config={"base » : « csur », « url » : « redis://<REDIS_USER>:<REDIS_PASSWORD>@<REDIS_HOST>:<REDIS_PORT>"}
 ```
 
-## HTTP
+## HTTP (en anglais seulement)
 
 > [HTTP](https://unstorage.unjs.io/drivers/http).
 >
-> Use a remote HTTP/HTTPS endpoint as data storage. Supports built-in [http server](https://unstorage.unjs.io/http-server) methods.
-> This driver implements meta for each key including `mtime` (last modified time) and `status` from HTTP headers by making a `HEAD` request.
+> Utilisez un point de terminaison HTTP/HTTPS distant comme stockage de données. Prend en charge les méthodes [http server](https://unstorage.unjs.io/http-server) intégrées.
+> Ce pilote implémente meta pour chaque clé, y compris 'mtime' (heure de la dernière modification) et 'status' des en-têtes HTTP en effectuant une requête 'HEAD'.
 
 Options:
 
-- `base`: Base URL for urls (required)
-- `headers`: Custom headers to send on all requests
+- 'base' : URL de base pour les urls (obligatoire)
+- 'headers' : En-têtes personnalisés à envoyer sur toutes les requêtes
 
 ```env
 db_name=http
-db_config={"base": "http://example.com"}
+db_config={"base » : « http://example.com"}
 ```
 
-## Cloudflare KV (Binding)
+## Cloudflare KV (Liaison)
 
-> [Cloudflare KV (Binding)](https://unstorage.unjs.io/drivers/cloudflare-kv-binding).
+> \[Cloudflare KV (Reliure)] (https\://unstorage.unjs.io/drivers/cloudflare-kv-binding).
 >
-> Store data in [Cloudflare KV](https://developers.cloudflare.com/workers/runtime-apis/kv) and access from worker bindings.
+> Stockez les données dans [Cloudflare KV](https://developers.cloudflare.com/workers/runtime-apis/kv) et accédez-y à partir des liaisons de travail.
 
-**Note: This driver only works in a Cloudflare Workers environment, use [cloudflare-kv-http](https://unstorage.unjs.io/drivers/cloudflare-kv-http) for other environments.**
+**Remarque : ce pilote ne fonctionne que dans un environnement Cloudflare Workers, utilisez [cloudflare-kv-http](https://unstorage.unjs.io/drivers/cloudflare-kv-http) pour d’autres environnements.**
 
-You need to create and assign a KV. See [KV Bindings](https://developers.cloudflare.com/workers/runtime-apis/kv#kv-bindings) for more information.
+Vous devez créer et affecter un KV. Voir [Liaisons KV](https://developers.cloudflare.com/workers/runtime-apis/kv#kv-bindings) pour plus d’informations.
 
 Options:
 
-- `binding`: KV binding or name of namespace. Default is STORAGE.
-- `base`: Adds prefix to all stored keys
+- 'binding' : liaison KV ou nom de l’espace de noms. La valeur par défaut est STORAGE.
+- 'base' : ajoute un préfixe à toutes les clés stockées
 
 ```env
-db_name=cloudflare-kv-binding
-db_config={"binding": "STORAGE"}
+db_name=liaison cloudflare-kv
+db_config={"binding » : « STOCKAGE"}
 ```
 
 ## Cloudflare KV (HTTP)
 
-> [Cloudflare KV (HTTP)](https://unstorage.unjs.io/drivers/cloudflare-kv-http).
+> \[Cloudflare KV (HTTP)] (https\://unstorage.unjs.io/drivers/cloudflare-kv-http).
 >
-> Store data in [Cloudflare KV](https://developers.cloudflare.com/workers/learning/how-kv-works/) using the [Cloudflare API v4](https://api.cloudflare.com/).
+> Stockez les données dans [Cloudflare KV](https://developers.cloudflare.com/workers/learning/how-kv-works/) à l’aide de l'[API Cloudflare v4](https://api.cloudflare.com/).
 
-You need to create a KV namespace. See [KV Bindings](https://developers.cloudflare.com/workers/runtime-apis/kv#kv-bindings) for more information.
-Note: This driver uses native fetch and works universally! For using directly in a cloudflare worker environment, please use cloudflare-kv-binding driver for best performance!
+Vous devez créer un espace de noms KV. Voir [Liaisons KV](https://developers.cloudflare.com/workers/runtime-apis/kv#kv-bindings) pour plus d’informations.
+Remarque : Ce pilote utilise la récupération native et fonctionne universellement ! Pour une utilisation directe dans un environnement de travail cloudflare, veuillez utiliser le pilote cloudflare-kv-binding pour de meilleures performances !
 
 Options:
 
-- `accountId`: Cloudflare account ID.
-- `namespaceId`: The ID of the KV namespace to target. Note: be sure to use the namespace's ID, and not the name or binding used in a worker environment.
-- `apiToken`: API Token generated from the [User Profile 'API Tokens' page](https://dash.cloudflare.com/profile/api-tokens).
-- `email`: Email address associated with your account. May be used along with apiKey to authenticate in place of apiToken.
-- `apiKey`: API key generated on the "My Account" page of the Cloudflare console. May be used along with email to authenticate in place of apiToken.
-- `userServiceKey`: A special Cloudflare API key good for a restricted set of endpoints. Always begins with "v1.0-", may vary in length. May be used to - authenticate in place of apiToken or apiKey and email.
-- `apiURL`: Custom API URL. Default is https\://api.cloudflare.com.
-- `base`: Adds prefix to all stored keys
+- 'accountId' : ID de compte Cloudflare.
+- 'namespaceId' : ID de l’espace de noms KV à cibler. Remarque : veillez à utiliser l’ID de l’espace de noms, et non le nom ou la liaison utilisés dans un environnement de travail.
+- 'apiToken' : jeton d’API généré à partir de la page [Profil utilisateur 'Jetons d’API'](https://dash.cloudflare.com/profile/api-tokens).
+- 'email' : Adresse e-mail associée à votre compte. Peut être utilisé avec apiKey pour s’authentifier à la place d’apiToken.
+- 'apiKey' : clé API générée sur la page « Mon compte » de la console Cloudflare. Peut être utilisé avec l’e-mail pour s’authentifier à la place d’apiToken.
+- 'userServiceKey' : une clé d’API Cloudflare spéciale adaptée à un ensemble restreint de terminaux. Commence toujours par « v1.0-« , peut varier en longueur. Peut être utilisé pour - s’authentifier à la place d’apiToken ou d’apiKey et d’e-mail.
+- 'apiURL' : URL d’API personnalisée. La valeur par défaut est https\://api.cloudflare.com.
+- 'base' : ajoute un préfixe à toutes les clés stockées
 
 ```env
 db_name=cloudflare-kv-http
-db_config={"accountId": "my-account-id", "namespaceId": "my-kv-namespace-id", "apiToken": "supersecret-api-token"}
+db_config={"accountId » : « my-account-id », « namespaceId » : « my-kv-namespace-id », « apiToken » : « supersecret-api-token"}
 ```
