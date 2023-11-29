@@ -1,154 +1,154 @@
 ---
-title: API Docs
+title: API 문서
 ---
 
-# API Docs
+# API 문서
 
-## Users
+## 사용자
 
-### Sign up
+### 등록하세요
 
 :::tip
-Before you create a new survey, you should sign up for an account for CranSurvey. By the way, the username and password are stored in your database. So the account can't login with other CranSurvey sites in different databases.
+새 설문조사를 만들기 전에 CranSurvey 계정에 가입해야 합니다. 그건 그렇고, 사용자 이름과 비밀번호는 데이터베이스에 저장됩니다. 따라서 계정은 다른 데이터베이스에 있는 다른 CranSurvey 사이트에 로그인할 수 없습니다.
 :::
 
-**Request:**
+**요청:**
 
 ```jsonc
-// POST /api/usr/sign-up
+POST /api/usr/sign-up
 {
-    // this is your user id,
+    이것은 귀하의 사용자 ID입니다.
     "id": "test_user",
-    // your password, should be encryped.
+    비밀번호는 반드시 지켜야 합니다.
     "pwd": "test_only"
 }
 ```
 
-**Body:**
+**몸:**
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success.",
-    // if this is the first user in the database, CranSurvey will init tables automatically,
-    // or it will be `false`.
-    "init": true,
-    // the token in JWT format.
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
+    "코드": 0,
+    "msg": "성공입니다.",
+    이 사용자가 데이터베이스의 첫 번째 사용자인 경우 CranSurvey는 자동으로 테이블을 초기화합니다.
+    그렇지 않으면 'false'가 됩니다.
+    "초기화": 사실,
+    JWT 형식의 토큰입니다.
+    "토큰": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
 }
 ```
 
-### Sign in
+### 서명하세요
 
-> Get a token by providing username and password.
+> 사용자 이름과 암호를 제공하여 토큰을 가져옵니다.
 
-**Request:**
+**요청:**
 
 ```jsonc
-// POST /api/usr/sign-in
+POST /api/usr/로그인
 {
-    // this is your user id,
+    이것은 귀하의 사용자 ID입니다.
     "id": "test_user",
-    // your password, should be encryped.
+    비밀번호는 반드시 지켜야 합니다.
     "pwd": "test_only"
 }
 ```
 
-**Response:**
+**응답:**
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success.",
-    // token in JWT format.
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
+    "코드": 0,
+    "msg": "성공입니다.",
+    토큰입니다.
+    "토큰": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
 }
 ```
 
-### Checking Token
+### 토큰 확인
 
-> Check if the token is valid.
+> 토큰이 유효한지 확인합니다.
 
-**Request:**
+**요청:**
 
 ```jsonc
-// POST /api/usr/token
+POST /api/usr/토큰
 {
-    // token in JWT format.
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
+    토큰입니다.
+    "토큰": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
 }
 ```
 
-**Response:**
+**응답:**
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success."
+    "코드": 0,
+    "msg": "성공."
 }
 ```
 
-## Surveys
+## 설문 조사
 
-### Create / Update Survey
+### 설문조사 만들기/업데이트
 
-> Create a new survey or update an existing survey.
+> 새 현장조사를 만들거나 기존 현장조사를 업데이트합니다.
 
-**Request:**
+**요청:**
 
 ```jsonc
 POST /api/survey/create
 {
-    // token in JWT format. (required)
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o",
-    // title of the survey. (required)
-    "title": "Test Survey",
-    // description of the survey. (required)
-    "description": "This is a test survey.",
-    // questions of the survey.
-    "questions": [
+    토큰입니다. (필수)
+    "토큰": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o",
+    설문조사의 제목입니다. (필수)
+    "title": "설문 조사 테스트",
+    설문 조사에 대한 설명입니다. (필수)
+    "description": "이것은 테스트 설문 조사입니다.",
+    설문 조사의 질문.
+    "질문": [
         {
-            // question id, should be unique and integer. (required)
-            "id": 0,
-            // question type. (required)
-            "type": "short_answer",
-            // question options.
-            "validate": {
-                "min": 1,
-                "max": 2048
+            질문 ID는 고유하고 정수여야 합니다. (필수)
+            "아이디": 0,
+            질문 유형. (필수)
+            "유형": "short_answer",
+            질문 옵션.
+            "유효성 검사": {
+                "분": 1,
+                "최대": 2048
             },
-            // question title. (required)
-            "title": "Test Question",
-            // question prompt.
-            "prompt": "This is a test question.",
-            // required / optional
-            "required": true,
-            "options": {
-                "optionsData": []
+            질문 제목입니다. (필수)
+            "title": "시험 문제",
+            질문 프롬프트.
+            "prompt": "시험 문제입니다.",
+            필수/선택 사항
+            "필수": 사실,
+            "옵션": {
+                "옵션 데이터": []
             }
         }
     ],
-    // type of survey, simple / advanced / prompt (required)
-    "type": "simple",
-    // site configs
-    "site": {
-        // leave blank for global enabled
-        "domain": ["example.com", "example.org"],
-        // the priority for the prompt window
-        "priority": 1,
-        // the position of the prompt window, bottom_right / bottom_left / bottom_banner
+    설문조사 유형, 단순/고급/프롬프트(필수)
+    "유형": "단순",
+    사이트 구성
+    "사이트": {
+        전역 활성화를 위해 비워 둡니다.
+        "도메인": ["example.com", "example.org"],
+        프롬프트 창의 우선 순위
+        "우선 순위": 1,
+        프롬프트 창의 위치, bottom_right / bottom_left / bottom_banner
         "promptWindowPosition": "bottom_right"
     }
 }
 ```
 
-- Response:
+- 응답:
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success.",
-    // the unique id of the survey.
-    "uid": "4596870a-07f1-4113-b52d-6aa49dd2d6d9"
+    "코드": 0,
+    "msg": "성공입니다.",
+    설문조사의 고유 ID입니다.
+    "uid": "4596870a-07f1-4113-b52d-6aa49dd2d6d9"입니다.
 }
 ```

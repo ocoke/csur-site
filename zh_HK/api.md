@@ -6,7 +6,7 @@ title: API Docs
 
 ## Users
 
-### Sign up
+### 建立賬號
 
 :::tip
 Before you create a new survey, you should sign up for an account for CranSurvey. By the way, the username and password are stored in your database. So the account can't login with other CranSurvey sites in different databases.
@@ -38,7 +38,7 @@ Before you create a new survey, you should sign up for an account for CranSurvey
 }
 ```
 
-### Sign in
+### 登入
 
 > Get a token by providing username and password.
 

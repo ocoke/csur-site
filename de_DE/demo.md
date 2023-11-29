@@ -1,26 +1,26 @@
 ---
-title: Demo Site
+title: Demo-Website
 ---
 
-# Demo Site
+# Demo-Website
 
-## Guide
+## Anleitung
 
-We deployed a development deployment on Vercel. It is based on the `master` branch and uses `memory` storage.
+Wir haben eine Entwicklungsbereitstellung auf Vercel bereitgestellt. Es basiert auf dem 'master'-Zweig und verwendet 'memory'-Speicher.
 
-All the data stored in the demo site will be deleted automatically.
+Alle Daten, die auf der Demo-Seite gespeichert sind, werden automatisch gelöscht.
 
-- Visit https\://csur-preview\.vercel.app
+- Besuchen Sie https\://csur-preview\.vercel.app
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/5cbad18d-5f59-449e-8579-6c4ee0fe8418)
 
-- Click the `Goto Dashboard` button, or [go to signup](https://csur-preview.vercel.app/sign-up)
+- Klicken Sie auf die Schaltfläche "Zum Dashboard" oder auf \[zur Anmeldung] (https\://csur-preview\.vercel.app/sign-up)
 
 ![image](https://github.com/ocoke/csur-site/assets/71591824/13e77354-4976-41bf-8b53-83f4b1fdb289)
 
-- You'll need to create a temporary account, just type the username and password that you want and click `Continue`.
+- Sie müssen ein temporäres Konto erstellen, geben Sie einfach den gewünschten Benutzernamen und das gewünschte Passwort ein und klicken Sie auf "Weiter".
 
-> **Note: Because we're using `memory` as the storage driver, all the data will be wiped out automatically. We can't control that. If there are some problems that tell you that you're unauthorized, just sign up and sign in again.**
+> **Hinweis: Da wir "Arbeitsspeicher" als Speichertreiber verwenden, werden alle Daten automatisch gelöscht. Das können wir nicht kontrollieren. Wenn es Probleme gibt, die Ihnen sagen, dass Sie nicht autorisiert sind, registrieren Sie sich einfach und melden Sie sich erneut an.**
 
 ## Screenshots
 

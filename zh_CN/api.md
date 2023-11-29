@@ -1,154 +1,154 @@
 ---
-title: API Docs
+title: API 文档
 ---
 
-# API Docs
+# API 文档
 
-## Users
+## 用户
 
-### Sign up
+### 登记
 
 :::tip
-Before you create a new survey, you should sign up for an account for CranSurvey. By the way, the username and password are stored in your database. So the account can't login with other CranSurvey sites in different databases.
+在创建新调查之前，您应该注册一个 CranSurvey 帐户。 顺便说一句，用户名和密码存储在您的数据库中。 因此，该帐户无法登录不同数据库中的其他CranSurvey站点。
 :::
 
-**Request:**
+**请求：**
 
 ```jsonc
-// POST /api/usr/sign-up
+开机自检 /api/usr/sign-up
 {
-    // this is your user id,
-    "id": "test_user",
-    // your password, should be encryped.
-    "pwd": "test_only"
+    这是您的用户 ID，
+    “id”： “test_user”，
+    您的密码，应该被加密。
+    “pwd”： “test_only”
 }
 ```
 
-**Body:**
+**身体：**
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success.",
-    // if this is the first user in the database, CranSurvey will init tables automatically,
-    // or it will be `false`.
-    "init": true,
-    // the token in JWT format.
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
+    “代码”：0，
+    “msg”： “成功。”
+    如果这是数据库中的第一个用户，CranSurvey 将自动初始化表，
+    否则它将是“虚假的”。
+    “init”：真，
+    JWT 格式的令牌。
+    “token”： “eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o”
 }
 ```
 
-### Sign in
+### 登录
 
-> Get a token by providing username and password.
+> 通过提供用户名和密码来获取令牌。
 
-**Request:**
+**请求：**
 
 ```jsonc
-// POST /api/usr/sign-in
+开机自检 /api/usr/sign-in
 {
-    // this is your user id,
-    "id": "test_user",
-    // your password, should be encryped.
-    "pwd": "test_only"
+    这是您的用户 ID，
+    “id”： “test_user”，
+    您的密码，应该被加密。
+    “pwd”： “test_only”
 }
 ```
 
-**Response:**
+**响应：**
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success.",
-    // token in JWT format.
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
+    “代码”：0，
+    “msg”： “成功。”
+    JWT 格式的令牌。
+    “token”： “eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o”
 }
 ```
 
-### Checking Token
+### 检查令牌
 
-> Check if the token is valid.
+> 检查令牌是否有效。
 
-**Request:**
+**请求：**
 
 ```jsonc
-// POST /api/usr/token
+开机自检 /api/usr/token
 {
-    // token in JWT format.
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
+    JWT 格式的令牌。
+    “token”： “eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o”
 }
 ```
 
-**Response:**
+**响应：**
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success."
+    “代码”：0，
+    “msg”： “成功。”
 }
 ```
 
-## Surveys
+## 调查
 
-### Create / Update Survey
+### 创建/更新调查
 
-> Create a new survey or update an existing survey.
+> 创建新调查或更新现有调查。
 
-**Request:**
+**请求：**
 
 ```jsonc
-POST /api/survey/create
+发布 /api/survey/create
 {
-    // token in JWT format. (required)
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o",
-    // title of the survey. (required)
-    "title": "Test Survey",
-    // description of the survey. (required)
-    "description": "This is a test survey.",
-    // questions of the survey.
-    "questions": [
+    JWT 格式的令牌。（必填）
+    “token”： “eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o”，
+    调查的标题。（必填）
+    “title”： “测试调查”，
+    调查说明。（必填）
+    “description”： “这是一个测试调查。”
+    调查的问题。
+    “问题”： [
         {
-            // question id, should be unique and integer. (required)
-            "id": 0,
-            // question type. (required)
-            "type": "short_answer",
-            // question options.
-            "validate": {
-                "min": 1,
-                "max": 2048
+            问题 ID，应为唯一且整数。（必填）
+            “id”：0，
+            问题类型。（必填）
+            “类型”： “short_answer”，
+            问题选项。
+            “验证”：{
+                “最小值”：1，
+                “最大”： 2048
             },
-            // question title. (required)
-            "title": "Test Question",
-            // question prompt.
-            "prompt": "This is a test question.",
-            // required / optional
-            "required": true,
-            "options": {
-                "optionsData": []
+            问题标题。（必填）
+            “title”： “测试题”，
+            问题提示。
+            “prompt”： “这是一个测试问题。”
+            必需/可选
+            “required”： true，
+            “选项”：{
+                “选项数据”：[]
             }
         }
     ],
-    // type of survey, simple / advanced / prompt (required)
-    "type": "simple",
-    // site configs
-    "site": {
-        // leave blank for global enabled
-        "domain": ["example.com", "example.org"],
-        // the priority for the prompt window
-        "priority": 1,
-        // the position of the prompt window, bottom_right / bottom_left / bottom_banner
-        "promptWindowPosition": "bottom_right"
+    调查类型，简单/高级/提示（必填）
+    “type”： “简单”，
+    站点配置
+    “站点”：{
+        将全局启用留空
+        “域”： [“example.com”， “example.org”]，
+        提示窗口的优先级
+        “优先级”：1，
+        提示窗口的位置，bottom_right/bottom_left/bottom_banner
+        “promptWindowPosition”： “bottom_right”
     }
 }
 ```
 
-- Response:
+- 响应：
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success.",
-    // the unique id of the survey.
-    "uid": "4596870a-07f1-4113-b52d-6aa49dd2d6d9"
+    “代码”：0，
+    “msg”： “成功。”
+    调查的唯一 ID。
+    “UID”： “4596870A-07F1-4113-B52D-6AA49DD2D6D9”
 }
 ```

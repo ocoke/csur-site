@@ -1,76 +1,76 @@
 ---
-title: Create a Survey
+title: 創建調查
 ---
 
-# Create a Survey
+# 創建調查
 
-First, you need to go to the dashboard of your CranSurvey site.
+首先，您需要轉到 CranSurvey 網站的儀錶板。
 
-Then, click on the sidebar and go to `Surveys`.
+然後，按兩下側邊欄並轉到“調查”。
 
-![image](https://github.com/ocoke/csur-site/assets/71591824/edd1366e-1869-4b44-af5e-ef62909b5a1b)
+!\[image]（https\://github.com/ocoke/csur-site/assets/71591824/edd1366e-1869-4b44-af5e-ef62909b5a1b）
 
-Click the `New Survey` which on the top of the page to create a survey.
+按兩下頁面頂部的「新建調查」 以創建調查。
 
-![image](https://github.com/ocoke/csur-site/assets/71591824/31254486-8987-4355-99e3-11fc240015f8)
+!\[image]（https\://github.com/ocoke/csur-site/assets/71591824/31254486-8987-4355-99e3-11fc240015f8）
 
-## Layout
+## 佈局
 
-First, you need to choose a layout for your survey.
+首先，您需要為調查選擇佈局。
 
-There are three layouts for your survey, they are `Simple`, `Advanced` and `Prompt`.
+您的調查有三種佈局，分別是「簡單」、「高級」和「提示」。
 
-- `Simple`: Simple Survey only includes one question, if you want to add it to your website, users don't need to open another prompt window to answer your questions.
-- `Advanced`: You can add several questions here and share them with a link easily. If you want to add it to your website, users will still stay on the page but there will be a prompt window for users to answer them.
-- `Prompt`: There are no questions and the page will only include a paragraph of text.
+- “簡單”：簡單調查只包含一個問題，如果您想將其添加到您的網站，使用者無需打開另一個提示視窗來回答您的問題。
+- “高級”：您可以在此處添加多個問題，並通過鏈接輕鬆共用。 如果您想將其添加到您的網站，使用者仍將停留在頁面上，但會有一個提示視窗供使用者回答。
+- “提示”：沒有問題，頁面將僅包含一段文本。
 
-## Adding a Question
+## 添加問題
 
-![image](https://github.com/ocoke/csur-site/assets/71591824/e7fc5883-a50c-44e0-bc1e-ba4332e8e65b)
+!\[image]（https\://github.com/ocoke/csur-site/assets/71591824/e7fc5883-a50c-44e0-bc1e-ba4332e8e65b）
 
-1. Question: This is the title of the question.
-2. Prompt: This is the description of your question.
-3. Type: There are several question types, choose according to your needs. (Short Answer, Paragraph, Multiple Choice, Checkboxes, Dropdown, File and Date).
-4. Answer Validate: Different types of questions have different rules and options.
-5. Placeholder: The placeholder for the text boxes.
+1. 問題：這是問題的標題。
+2. 提示：這是對您的問題的描述。
+3. 類型：有幾種問題類型，根據您的需要選擇。 （簡答題、段落、多項選擇、複選框、下拉清單、檔和日期）。
+4. 回答驗證：不同類型的問題有不同的規則和選項。
+5. 佔位元：文本框的佔位元。
 
-If you're using advanced survey, you need to click the `Add` button to add it to your questions list.
+如果您使用的是高級調查，則需要按下「添加」按鈕將其添加到您的問題清單中。
 
-## Answer Validate
+## 答案驗證
 
-### Short Answer / Paragraph
+### 簡答題/段落
 
-You can set the maximum and minimum length of the answers (characters).
+您可以設置答案（字元）的最大和最小長度。
 
-![image](https://github.com/ocoke/csur-site/assets/71591824/f2f2e880-edfe-48db-aef7-af4ae7a74da1)
+!\[image]（https\://github.com/ocoke/csur-site/assets/71591824/f2f2e880-edfe-48db-aef7-af4ae7a74da1）
 
-### Multiple Choice / Dropdown / Checkboxes
+### 多項選擇/下拉清單/複選框
 
-You'll need to add your options here.
+您需要在此處添加您的選項。
 
-![image](https://github.com/ocoke/csur-site/assets/71591824/4e53793e-9949-4471-8f77-ba8f590333fb)
+!\[image]（https\://github.com/ocoke/csur-site/assets/71591824/4e53793e-9949-4471-8f77-ba8f590333fb）
 
-### File Upload
+### 檔上傳
 
-You can set the specific types of files that are allowed.
+您可以設定允許的特定檔案類型。
 
-![image](https://github.com/ocoke/csur-site/assets/71591824/38aab540-e7f2-424c-ba21-a39db0844813)
+!\[image]（https\://github.com/ocoke/csur-site/assets/71591824/38aab540-e7f2-424c-ba21-a39db0844813）
 
-### Date
+### 日期
 
-You can set the start and the end of the date that you collect.
+您可以設定收集日期的開始和結束日期。
 
-![image](https://github.com/ocoke/csur-site/assets/71591824/d879c0c3-041d-43a0-b4ca-93faabb803a2)
+!\[image]（https\://github.com/ocoke/csur-site/assets/71591824/d879c0c3-041d-43a0-b4ca-93faabb803a2）
 
-![image](https://github.com/ocoke/csur-site/assets/71591824/27c64c1c-7b04-4c94-a484-db1e4b329348)
+!\[image]（https\://github.com/ocoke/csur-site/assets/71591824/27c64c1c-7b04-4c94-a484-db1e4b329348）
 
-## Site Configure
+## 網站配置
 
-![image](https://github.com/ocoke/csur-site/assets/71591824/25018c98-7f12-4ca3-9de1-dea76083ca3e)
+!\[image]（https\://github.com/ocoke/csur-site/assets/71591824/25018c98-7f12-4ca3-9de1-dea76083ca3e）
 
-We have reserved support for our web plugins.
+我們保留了對 Web 外掛程式的支援。
 
-1. Domain: The domains to which this survey applies.
-2. Position: Choose a position for the prompt window of the web plugins.
-3. Display Priority: Enter a number, The larger the number, the higher the priority of showing.
-4. Webhook: The Webhook URL for the survey. We'll push Webhook message when we get a new response.
+1. 域：此調查適用的域。
+2. 位置：為 Web 外掛程式的提示視窗選擇一個位置。
+3. 顯示優先順序：輸入一個數位，數位越大，顯示優先順序越高。
+4. Webhook：調查的 Webhook URL。 當我們收到新的回應時，我們將推送 Webhook 消息。

@@ -1,154 +1,154 @@
 ---
-title: API Docs
+title: Documentation de l’API
 ---
 
-# API Docs
+# Documentation de l’API
 
-## Users
+## Utilisateurs
 
-### Sign up
+### S’enregistrer
 
 :::tip
-Before you create a new survey, you should sign up for an account for CranSurvey. By the way, the username and password are stored in your database. So the account can't login with other CranSurvey sites in different databases.
+Avant de créer une nouvelle enquête, vous devez créer un compte pour CranSurvey. D’ailleurs, le nom d’utilisateur et le mot de passe sont stockés dans votre base de données. Le compte ne peut donc pas se connecter à d’autres sites CranSurvey dans des bases de données différentes.
 :::
 
-**Request:**
+**Demander:**
 
 ```jsonc
-// POST /api/usr/sign-up
+POST /api/usr/sign-up
 {
-    // this is your user id,
-    "id": "test_user",
-    // your password, should be encryped.
-    "pwd": "test_only"
+    Il s’agit de votre nom d’utilisateur,
+    « id » : « test_user »,
+    votre mot de passe, doit être encrié.
+    « pwd » : « test_only »
 }
 ```
 
-**Body:**
+**Corps:**
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success.",
-    // if this is the first user in the database, CranSurvey will init tables automatically,
-    // or it will be `false`.
-    "init": true,
-    // the token in JWT format.
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
+    « code » : 0,
+    « msg » : « Succès. »,
+    s’il s’agit du premier utilisateur de la base de données, CranSurvey initialisera automatiquement les tables,
+    ou ce sera 'faux'.
+    « init » : true,
+    le jeton au format JWT.
+    « token » : « eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o »
 }
 ```
 
-### Sign in
+### Connexion
 
-> Get a token by providing username and password.
+> Obtenez un jeton en fournissant un nom d’utilisateur et un mot de passe.
 
-**Request:**
+**Demander:**
 
 ```jsonc
-// POST /api/usr/sign-in
+POST /api/usr/sign-in
 {
-    // this is your user id,
-    "id": "test_user",
-    // your password, should be encryped.
-    "pwd": "test_only"
+    Il s’agit de votre nom d’utilisateur,
+    « id » : « test_user »,
+    votre mot de passe, doit être encrié.
+    « pwd » : « test_only »
 }
 ```
 
-**Response:**
+**Réponse:**
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success.",
-    // token in JWT format.
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
+    « code » : 0,
+    « msg » : « Succès. »,
+    jeton au format JWT.
+    « token » : « eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o »
 }
 ```
 
-### Checking Token
+### Vérification du jeton
 
-> Check if the token is valid.
+> Vérifiez si le jeton est valide.
 
-**Request:**
+**Demander:**
 
 ```jsonc
-// POST /api/usr/token
+POST /api/usr/token
 {
-    // token in JWT format.
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
+    jeton au format JWT.
+    « token » : « eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o »
 }
 ```
 
-**Response:**
+**Réponse:**
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success."
+    « code » : 0,
+    « msg » : « Succès. »
 }
 ```
 
-## Surveys
+## Enquêtes
 
-### Create / Update Survey
+### Créer / Mettre à jour l’enquête
 
-> Create a new survey or update an existing survey.
+> Créez une nouvelle enquête ou mettez à jour une enquête existante.
 
-**Request:**
+**Demander:**
 
 ```jsonc
-POST /api/survey/create
+POST /api/enquête/créer
 {
-    // token in JWT format. (required)
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o",
-    // title of the survey. (required)
-    "title": "Test Survey",
-    // description of the survey. (required)
-    "description": "This is a test survey.",
-    // questions of the survey.
-    "questions": [
+    jeton au format JWT. (obligatoire)
+    « token » : « eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o »,
+    titre de l’enquête. (obligatoire)
+    « title » : « Enquête de test »,
+    Description de l’enquête. (obligatoire)
+    « description » : « Il s’agit d’une enquête test. »,
+    questions de l’enquête.
+    « questions » : [
         {
-            // question id, should be unique and integer. (required)
-            "id": 0,
-            // question type. (required)
-            "type": "short_answer",
-            // question options.
-            "validate": {
-                "min": 1,
-                "max": 2048
+            L’identifiant de la question doit être unique et entier. (obligatoire)
+            « id » : 0,
+            type de question. (obligatoire)
+            « type » : « short_answer »,
+            options de question.
+            « valider » : {
+                « min » : 1,
+                « max » : 2048
             },
-            // question title. (required)
-            "title": "Test Question",
-            // question prompt.
-            "prompt": "This is a test question.",
-            // required / optional
-            "required": true,
-            "options": {
-                "optionsData": []
+            Titre de la question. (obligatoire)
+            « title » : « Question de test »,
+            invite de question.
+            « prompt » : « Il s’agit d’une question de test. »,
+            Obligatoire / Facultatif
+            « required » : true,
+            « options » : {
+                « optionsData » : []
             }
         }
     ],
-    // type of survey, simple / advanced / prompt (required)
-    "type": "simple",
-    // site configs
-    "site": {
-        // leave blank for global enabled
-        "domain": ["example.com", "example.org"],
-        // the priority for the prompt window
-        "priority": 1,
-        // the position of the prompt window, bottom_right / bottom_left / bottom_banner
-        "promptWindowPosition": "bottom_right"
+    Type d’enquête, Simple / Avancé / Prompt (obligatoire)
+    « type » : « simple »,
+    Configurations du site
+    « site » : {
+        Laissez le champ vide pour l’option Global Enabled
+        « domaine » : ["example.com », « example.org"],
+        la priorité de la fenêtre d’invite
+        « priorité » : 1,
+        la position de la fenêtre d’invite, bottom_right / bottom_left / bottom_banner
+        « promptWindowPosition » : « bottom_right »
     }
 }
 ```
 
-- Response:
+- Réponse:
 
 ```jsonc
 {
-    "code": 0,
-    "msg": "Success.",
-    // the unique id of the survey.
-    "uid": "4596870a-07f1-4113-b52d-6aa49dd2d6d9"
+    « code » : 0,
+    « msg » : « Succès. »,
+    ID unique de l’enquête.
+    « uid » : « 4596870a-07f1-4113-b52d-6aa49dd2d6d9 »
 }
 ```

@@ -1,120 +1,120 @@
 ---
-title: Configure the Database
+title: データベースの構成
 ---
 
-# Configure the Database
+# データベースの構成
 
-There are two environment variables that matter to database configuration, which are `db_name` and `db_config`.
+データベース構成には、「db\_name」と「db\_config」の 2 つの環境変数があります。
 
-The `db_name` means the name of the type of the database, the `db_config` means the configuration of it.
+「db\_name」はデータベースの種類の名前を意味し、「db\_config」はデータベースの構成を意味します。
 
-CranSurvey uses `unstorage` to connect to your database, almost every database configuration option can be used.
+CranSurveyは「unstorage」を使用してデータベースに接続し、ほとんどすべてのデータベース構成オプションを使用できます。
 
-## Memory
+## 記憶
 
-> [Memory Driver](https://unstorage.unjs.io/drivers/memory) is the default database and it doesn't need any configuration.
+> [メモリドライバ](https://unstorage.unjs.io/drivers/memory) は既定のデータベースであり、構成は必要ありません。
 
-However, it keeps data in memory using [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), so the data may be lost when the memory is cleared.
+ただし、 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)であるため、メモリがクリアされるとデータが失われる可能性があります。
 
-Memory Driver can't be used in production mode.
+メモリ ドライバーは、運用モードでは使用できません。
 
 ```env
-db_name=memory
+db_name=メモリ
 db_config={}
 ```
 
-## Node.js Filesystem
+## ノード.js ファイルシステム
 
-> [Node.js Filesystem](https://unstorage.unjs.io/drivers/fs).
+> [ノード.jsファイルシステム](https://unstorage.unjs.io/drivers/fs)。
 >
-> Maps data to the real filesystem using directory structure for nested keys. Supports watching using [chokidar](https://github.com/paulmillr/chokidar).
-> This driver implements meta for each key including `mtime` (last modified time), `atime` (last access time), and size (file size) using `fs.stat`.
+> ネストされたキーのディレクトリ構造を使用して、データを実際のファイルシステムにマップします。 を使用した視聴をサポート [chokidar](https://github.com/paulmillr/chokidar)。
+> このドライバは、'fs.stat' を使用して、'mtime' (最終更新時刻)、'atime' (最終アクセス時刻)、サイズ (ファイルサイズ) を含む各キーのメタを実装します。
 
-Options:
+オプション：
 
-- `base`: Base directory to isolate operations on this directory
-- `ignore`: Ignore patterns for watch
+- 'base': このディレクトリに対する操作を分離するベースディレクトリ
+- 'ignore': ウォッチのパターンを無視します
 
 ```env
 db_name=fs
 db_config={"base": "./.tmp"}
 ```
 
-## Redis
+## Redis(レディス)
 
-> [Redis](https://unstorage.unjs.io/drivers/redis).
+> [Redis](https://unstorage.unjs.io/drivers/redis)。
 >
-> Store data in a [Redis](https://redis.com/) storage using [ioredis](https://github.com/luin/ioredis).
+> データを [Redis](https://redis.com/)ストレージを使用して、 [ioredis](https://github.com/luin/ioredis)。
 
-Options:
+オプション：
 
-- `base`: Optional prefix to use for all keys. Can be used for namespacing. Has to be used as hastag prefix for redis cluster mode.
-- `url`: Url to use for connecting to redis. Takes precedence over host option. Has the format `redis://<REDIS_USER>:<REDIS_PASSWORD>@<REDIS_HOST>:<REDIS_PORT>`.
-- `cluster`: List of redis nodes to use for cluster mode. Takes precedence over url and host options.
-- `clusterOptions`: Options to use for cluster mode.
-- `ttl`: Default TTL for all items in seconds.
+- 'base': すべてのキーに使用するオプションのプレフィックス。 名前空間に使用できます。 redisクラスタモードのhastagプレフィックスとして使用する必要があります。
+- 'url': redis への接続に使用する URL。 ホスト・オプションよりも優先されます。 形式は 'redis\://\<REDIS\_USER>:\<REDIS\_PASSWORD>@\<REDIS\_HOST>:\<REDIS\_PORT>'.
+- 'cluster': クラスター モードに使用する Redis ノードのリスト。 url と host オプションよりも優先されます。
+- 'clusterOptions': クラスター モードに使用するオプション。
+- 'ttl': すべての項目の既定の TTL (秒単位)。
 
 ```env
 db_name=redis
 db_config={"base": "csur", "url": "redis://<REDIS_USER>:<REDIS_PASSWORD>@<REDIS_HOST>:<REDIS_PORT>"}
 ```
 
-## HTTP
+## HTTPの
 
-> [HTTP](https://unstorage.unjs.io/drivers/http).
+> [HTTP](https://unstorage.unjs.io/drivers/http)。
 >
-> Use a remote HTTP/HTTPS endpoint as data storage. Supports built-in [http server](https://unstorage.unjs.io/http-server) methods.
-> This driver implements meta for each key including `mtime` (last modified time) and `status` from HTTP headers by making a `HEAD` request.
+> リモートの HTTP/HTTPS エンドポイントをデータ ストレージとして使用します。 組み込みの [http server](https://unstorage.unjs.io/http-server) メソッドをサポートします。
+> このドライバは、'HEAD' リクエストを行うことで、HTTP ヘッダから 'mtime' (最終更新時刻) や 'status' を含む各キーのメタを実装します。
 
-Options:
+オプション：
 
-- `base`: Base URL for urls (required)
-- `headers`: Custom headers to send on all requests
+- 'base': URL のベース URL (必須)
+- 'headers': すべてのリクエストで送信するカスタムヘッダー
 
 ```env
 db_name=http
-db_config={"base": "http://example.com"}
+db_config={"ベース": "http://example.com"}
 ```
 
-## Cloudflare KV (Binding)
+## Cloudflare KV (バインディング)
 
-> [Cloudflare KV (Binding)](https://unstorage.unjs.io/drivers/cloudflare-kv-binding).
+> 【Cloudflare KV(バインディング)】(https\://unstorage.unjs.io/drivers/cloudflare-kv-binding)。
 >
-> Store data in [Cloudflare KV](https://developers.cloudflare.com/workers/runtime-apis/kv) and access from worker bindings.
+> [Cloudflare KV](https://developers.cloudflare.com/workers/runtime-apis/kv)にデータを保存し、ワーカーバインディングからアクセスします。
 
-**Note: This driver only works in a Cloudflare Workers environment, use [cloudflare-kv-http](https://unstorage.unjs.io/drivers/cloudflare-kv-http) for other environments.**
+\*\*注:このドライバーはCloudflare Workers環境でのみ動作します。 [cloudflare-kv-http](https://unstorage.unjs.io/drivers/cloudflare-kv-http)その他の環境の場合。
 
-You need to create and assign a KV. See [KV Bindings](https://developers.cloudflare.com/workers/runtime-apis/kv#kv-bindings) for more information.
+KV を作成して割り当てる必要があります。 詳細については、[KV Bindings](https://developers.cloudflare.com/workers/runtime-apis/kv#kv-bindings) を参照してください。
 
-Options:
+オプション：
 
-- `binding`: KV binding or name of namespace. Default is STORAGE.
-- `base`: Adds prefix to all stored keys
+- 'binding': KV バインディングまたは名前空間の名前。 デフォルトは STORAGE です。
+- 'base': 保存されているすべてのキーに接頭辞を追加します
 
 ```env
 db_name=cloudflare-kv-binding
-db_config={"binding": "STORAGE"}
+db_config={"binding": "ストレージ"}
 ```
 
-## Cloudflare KV (HTTP)
+## Cloudflare KV(HTTP)
 
-> [Cloudflare KV (HTTP)](https://unstorage.unjs.io/drivers/cloudflare-kv-http).
+> 【Cloudflare KV(HTTP)の場合】(https\://unstorage.unjs.io/drivers/cloudflare-kv-http)。
 >
-> Store data in [Cloudflare KV](https://developers.cloudflare.com/workers/learning/how-kv-works/) using the [Cloudflare API v4](https://api.cloudflare.com/).
+> [Cloudflare API v4](https://api.cloudflare.com/)を使用して[Cloudflare KV](https://developers.cloudflare.com/workers/learning/how-kv-works/)にデータを保存します。
 
-You need to create a KV namespace. See [KV Bindings](https://developers.cloudflare.com/workers/runtime-apis/kv#kv-bindings) for more information.
-Note: This driver uses native fetch and works universally! For using directly in a cloudflare worker environment, please use cloudflare-kv-binding driver for best performance!
+KV 名前空間を作成する必要があります。 詳細については、[KV Bindings](https://developers.cloudflare.com/workers/runtime-apis/kv#kv-bindings) を参照してください。
+注:このドライバーはネイティブフェッチを使用し、普遍的に動作します。 cloudflareワーカー環境で直接使用する場合は、cloudflare-kv-bindingドライバーを使用して最高のパフォーマンスを得てください。
 
-Options:
+オプション：
 
-- `accountId`: Cloudflare account ID.
-- `namespaceId`: The ID of the KV namespace to target. Note: be sure to use the namespace's ID, and not the name or binding used in a worker environment.
-- `apiToken`: API Token generated from the [User Profile 'API Tokens' page](https://dash.cloudflare.com/profile/api-tokens).
-- `email`: Email address associated with your account. May be used along with apiKey to authenticate in place of apiToken.
-- `apiKey`: API key generated on the "My Account" page of the Cloudflare console. May be used along with email to authenticate in place of apiToken.
-- `userServiceKey`: A special Cloudflare API key good for a restricted set of endpoints. Always begins with "v1.0-", may vary in length. May be used to - authenticate in place of apiToken or apiKey and email.
-- `apiURL`: Custom API URL. Default is https\://api.cloudflare.com.
-- `base`: Adds prefix to all stored keys
+- 'accountId':CloudflareアカウントID。
+- 'namespaceId': ターゲットとする KV 名前空間の ID。 注: ワーカー環境で使用される名前やバインディングではなく、名前空間の ID を必ず使用してください。
+- 'apiToken': [ユーザープロファイルの「APIトークン」ページ](https://dash.cloudflare.com/profile/api-tokens)から生成されたAPIトークン。
+- 'email': アカウントに関連付けられているメールアドレス。 apiKey と共に使用して、apiToken の代わりに認証できます。
+- 'apiKey':Cloudflareコンソールの「マイアカウント」ページで生成されたAPIキー。 apiTokenの代わりに認証するために電子メールと一緒に使用できます。
+- 'userServiceKey':限定されたエンドポイントセットに適した特別なCloudflare APIキー。 常に「v1.0-」で始まり、長さが異なる場合があります。 apiTokenまたはapiKeyと電子メールの代わりに認証するために使用できます。
+- 'apiURL': カスタム API URL。 既定値は https\://api.cloudflare.com です。
+- 'base': 保存されているすべてのキーに接頭辞を追加します
 
 ```env
 db_name=cloudflare-kv-http

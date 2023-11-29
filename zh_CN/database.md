@@ -1,122 +1,122 @@
 ---
-title: Configure the Database
+title: 配置数据库
 ---
 
-# Configure the Database
+# 配置数据库
 
-There are two environment variables that matter to database configuration, which are `db_name` and `db_config`.
+有两个环境变量对数据库配置很重要，分别是“db\_name”和“db\_config”。
 
-The `db_name` means the name of the type of the database, the `db_config` means the configuration of it.
+“db\_name”表示数据库类型的名称，“db\_config”表示数据库的配置。
 
-CranSurvey uses `unstorage` to connect to your database, almost every database configuration option can be used.
+CranSurvey使用“unstorage”连接到您的数据库，几乎可以使用所有数据库配置选项。
 
-## Memory
+## 记忆
 
-> [Memory Driver](https://unstorage.unjs.io/drivers/memory) is the default database and it doesn't need any configuration.
+> \[内存驱动程序]（https\://unstorage.unjs.io/drivers/memory） 是默认数据库，不需要任何配置。
 
-However, it keeps data in memory using [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), so the data may be lost when the memory is cleared.
+但是，它使用 \[Map]（https\://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Map），因此在清除内存时数据可能会丢失。
 
-Memory Driver can't be used in production mode.
+内存驱动程序不能在生产模式下使用。
 
 ```env
-db_name=memory
+db_name=内存
 db_config={}
 ```
 
-## Node.js Filesystem
+## Node.js 文件系统
 
-> [Node.js Filesystem](https://unstorage.unjs.io/drivers/fs).
+> \[Node.js 文件系统]（https\://unstorage.unjs.io/drivers/fs）。
 >
-> Maps data to the real filesystem using directory structure for nested keys. Supports watching using [chokidar](https://github.com/paulmillr/chokidar).
-> This driver implements meta for each key including `mtime` (last modified time), `atime` (last access time), and size (file size) using `fs.stat`.
+> 使用嵌套键的目录结构将数据映射到实际文件系统。 支持使用 \[chokidar]（https\://github.com/paulmillr/chokidar）。
+> 此驱动程序使用 'fs.stat' 为每个键实现元，包括 'mtime'（上次修改时间）、'atime'（上次访问时间）和 size（文件大小）。
 
-Options:
+选项：
 
-- `base`: Base directory to isolate operations on this directory
-- `ignore`: Ignore patterns for watch
+- “base”：用于隔离此目录上的操作的基目录
+- “ignore”：忽略监视的模式
 
 ```env
 db_name=fs
-db_config={"base": "./.tmp"}
+db_config={“base”： “./.tmp”}
 ```
 
-## Redis
+## 雷迪斯
 
-> [Redis](https://unstorage.unjs.io/drivers/redis).
+> \[Redis]（https\://unstorage.unjs.io/drivers/redis）。
 >
-> Store data in a [Redis](https://redis.com/) storage using [ioredis](https://github.com/luin/ioredis).
+> 将数据存储在 \[Redis]（https\://redis.com/） 存储使用 \[ioredis]（https\://github.com/luin/ioredis）。
 
-Options:
+选项：
 
-- `base`: Optional prefix to use for all keys. Can be used for namespacing. Has to be used as hastag prefix for redis cluster mode.
-- `url`: Url to use for connecting to redis. Takes precedence over host option. Has the format `redis://<REDIS_USER>:<REDIS_PASSWORD>@<REDIS_HOST>:<REDIS_PORT>`.
-- `cluster`: List of redis nodes to use for cluster mode. Takes precedence over url and host options.
-- `clusterOptions`: Options to use for cluster mode.
-- `ttl`: Default TTL for all items in seconds.
+- “base”：用于所有键的可选前缀。 可用于命名空间。 必须用作 redis 集群模式的 hastag 前缀。
+- 'url'：用于连接到 redis 的 URL。 优先于主机选项。 格式为“redis\://\<REDIS\_USER>:\<REDIS\_PASSWORD>@\<REDIS\_HOST>:\<REDIS\_PORT>'.
+- “cluster”：用于集群模式的 redis 节点列表。 优先于 url 和 host 选项。
+- “clusterOptions”：用于群集模式的选项。
+- “ttl”：所有项目的默认 TTL（以秒为单位）。
 
 ```env
 db_name=redis
-db_config={"base": "csur", "url": "redis://<REDIS_USER>:<REDIS_PASSWORD>@<REDIS_HOST>:<REDIS_PORT>"}
+db_config={“base”： “csur”， “url”： “redis://<REDIS_USER>:<REDIS_PASSWORD>@<REDIS_HOST>:<REDIS_PORT>"}
 ```
 
-## HTTP
+## HTTP协议
 
-> [HTTP](https://unstorage.unjs.io/drivers/http).
+> \[HTTP]（https\://unstorage.unjs.io/drivers/http）。
 >
-> Use a remote HTTP/HTTPS endpoint as data storage. Supports built-in [http server](https://unstorage.unjs.io/http-server) methods.
-> This driver implements meta for each key including `mtime` (last modified time) and `status` from HTTP headers by making a `HEAD` request.
+> 使用远程 HTTP/HTTPS 端点作为数据存储。 支持内置 \[http server]（https\://unstorage.unjs.io/http-server） 方法。
+> 此驱动程序通过发出“HEAD”请求，为每个键实现元，包括 HTTP 标头中的“mtime”（上次修改时间）和“status”。
 
-Options:
+选项：
 
-- `base`: Base URL for urls (required)
-- `headers`: Custom headers to send on all requests
+- “base”：url 的基本 URL（必填）
+- “headers”：针对所有请求发送的自定义标头
 
 ```env
 db_name=http
-db_config={"base": "http://example.com"}
+db_config={“base”： “http://example.com”}
 ```
 
-## Cloudflare KV (Binding)
+## Cloudflare KV（绑定）
 
-> [Cloudflare KV (Binding)](https://unstorage.unjs.io/drivers/cloudflare-kv-binding).
+> \[Cloudflare KV（绑定）]（https\://unstorage.unjs.io/drivers/cloudflare-kv-binding）。
 >
-> Store data in [Cloudflare KV](https://developers.cloudflare.com/workers/runtime-apis/kv) and access from worker bindings.
+> 将数据存储在 \[Cloudflare KV]（https\://developers.cloudflare.com/workers/runtime-apis/kv） 中，并从 worker 绑定访问。
 
-**Note: This driver only works in a Cloudflare Workers environment, use [cloudflare-kv-http](https://unstorage.unjs.io/drivers/cloudflare-kv-http) for other environments.**
+\*\*注意：此驱动程序仅适用于 Cloudflare Workers 环境，请使用 \[cloudflare-kv-http]（https\://unstorage.unjs.io/drivers/cloudflare-kv-http） 用于其他环境。
 
-You need to create and assign a KV. See [KV Bindings](https://developers.cloudflare.com/workers/runtime-apis/kv#kv-bindings) for more information.
+您需要创建并分配 KV。 有关详细信息，请参见 \[KV 绑定]（https\://developers.cloudflare.com/workers/runtime-apis/kv#kv-bindings）。
 
-Options:
+选项：
 
-- `binding`: KV binding or name of namespace. Default is STORAGE.
-- `base`: Adds prefix to all stored keys
+- “binding”：KV 绑定或命名空间的名称。 默认值为 STORAGE。
+- “base”： 为所有存储的键添加前缀
 
 ```env
 db_name=cloudflare-kv-binding
-db_config={"binding": "STORAGE"}
+db_config={“binding”： “存储”}
 ```
 
-## Cloudflare KV (HTTP)
+## Cloudflare KV （HTTP）
 
-> [Cloudflare KV (HTTP)](https://unstorage.unjs.io/drivers/cloudflare-kv-http).
+> \[Cloudflare KV （HTTP）]（https\://unstorage.unjs.io/drivers/cloudflare-kv-http）。
 >
-> Store data in [Cloudflare KV](https://developers.cloudflare.com/workers/learning/how-kv-works/) using the [Cloudflare API v4](https://api.cloudflare.com/).
+> 使用 \[Cloudflare API v4]（https\://api.cloudflare.com/） 将数据存储在 \[Cloudflare KV]（https\://developers.cloudflare.com/workers/learning/how-kv-works/） 中。
 
-You need to create a KV namespace. See [KV Bindings](https://developers.cloudflare.com/workers/runtime-apis/kv#kv-bindings) for more information.
-Note: This driver uses native fetch and works universally! For using directly in a cloudflare worker environment, please use cloudflare-kv-binding driver for best performance!
+您需要创建一个 KV 命名空间。 有关详细信息，请参见 \[KV 绑定]（https\://developers.cloudflare.com/workers/runtime-apis/kv#kv-bindings）。
+注意：此驱动程序使用本机提取并普遍工作！ 要直接在 cloudflare worker 环境中使用，请使用 cloudflare-kv-binding 驱动程序以获得最佳性能！
 
-Options:
+选项：
 
-- `accountId`: Cloudflare account ID.
-- `namespaceId`: The ID of the KV namespace to target. Note: be sure to use the namespace's ID, and not the name or binding used in a worker environment.
-- `apiToken`: API Token generated from the [User Profile 'API Tokens' page](https://dash.cloudflare.com/profile/api-tokens).
-- `email`: Email address associated with your account. May be used along with apiKey to authenticate in place of apiToken.
-- `apiKey`: API key generated on the "My Account" page of the Cloudflare console. May be used along with email to authenticate in place of apiToken.
-- `userServiceKey`: A special Cloudflare API key good for a restricted set of endpoints. Always begins with "v1.0-", may vary in length. May be used to - authenticate in place of apiToken or apiKey and email.
-- `apiURL`: Custom API URL. Default is https\://api.cloudflare.com.
-- `base`: Adds prefix to all stored keys
+- “accountId”：Cloudflare 帐户 ID。
+- “namespaceId”：要面向的 KV 命名空间的 ID。 注意：请务必使用命名空间的 ID，而不是工作线程环境中使用的名称或绑定。
+- 'apiToken'：从\[用户配置文件'API Tokens'页面]（https\://dash.cloudflare.com/profile/api-tokens）生成的API Token。
+- “email”：与您的帐户关联的电子邮件地址。 可以与 apiKey 一起使用，以代替 apiToken 进行身份验证。
+- “apiKey”：在 Cloudflare 控制台的“我的帐户”页面上生成的 API 密钥。 可以与电子邮件一起使用，以代替 apiToken 进行身份验证。
+- 'userServiceKey'：一个特殊的 Cloudflare API 密钥，适用于一组受限的端点。 始终以“v1.0-”开头，长度可能不同。 可用于 - 代替 apiToken 或 apiKey 和电子邮件进行身份验证。
+- “apiURL”：自定义 API URL。 默认值为 https\://api.cloudflare.com。
+- “base”： 为所有存储的键添加前缀
 
 ```env
 db_name=cloudflare-kv-http
-db_config={"accountId": "my-account-id", "namespaceId": "my-kv-namespace-id", "apiToken": "supersecret-api-token"}
+db_config={“accountId”： “我的账户ID”， “namespaceId”： “我的kv命名空间ID”， “apiToken”： “supersecret-api-token”}
 ```

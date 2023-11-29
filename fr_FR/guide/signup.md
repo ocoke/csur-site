@@ -2,11 +2,11 @@
 title: Sign up to CranSurvey
 ---
 
-# Sign up to CranSurvey
+# Inscrivez-vous à CranSurvey
 
 After deploying your CranSurvey site, you need to sign up for an account with a username and a password.
 
-By the way, the username and password are stored in your database. So the account can't sign in with other CranSurvey sites in different databases.
+D’ailleurs, le nom d’utilisateur et le mot de passe sont stockés dans votre base de données. Le compte ne peut donc pas se connecter à d’autres sites CranSurvey dans des bases de données différentes.
 
 Visit: `https://[your-domain]/sign-up` to sign up.
 

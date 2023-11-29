@@ -1,154 +1,154 @@
 ---
-title: API Docs
+title: API-Dokumentation
 ---
 
-# API Docs
+# API-Dokumentation
 
-## Users
+## Benutzer
 
-### Sign up
+### Anmelden
 
 :::tip
-Before you create a new survey, you should sign up for an account for CranSurvey. By the way, the username and password are stored in your database. So the account can't login with other CranSurvey sites in different databases.
+Bevor Sie eine neue Umfrage erstellen, sollten Sie sich für ein Konto bei CranSurvey registrieren. Der Benutzername und das Passwort werden übrigens in Ihrer Datenbank gespeichert. Das Konto kann sich also nicht bei anderen CranSurvey-Websites in anderen Datenbanken anmelden.
 :::
 
-**Request:**
+**Bitten:**
 
 ```jsonc
-// POST /api/usr/sign-up
+POST /api/usr/sign-up
 {
-    // this is your user id,
+    Dies ist Ihre Benutzer-ID,
     "id": "test_user",
-    // your password, should be encryped.
+    Ihr Passwort sollte verschlüsselt sein.
     "pwd": "test_only"
 }
 ```
 
-**Body:**
+**Körper:**
 
 ```jsonc
 {
     "code": 0,
-    "msg": "Success.",
-    // if this is the first user in the database, CranSurvey will init tables automatically,
-    // or it will be `false`.
-    "init": true,
-    // the token in JWT format.
+    "msg": "Erfolg.",
+    Wenn dies der erste Benutzer in der Datenbank ist, wird CranSurvey Tabellen automatisch initieren.
+    Oder es wird "falsch" sein.
+    "init": wahr,
+    das Token im JWT-Format.
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
 }
 ```
 
-### Sign in
+### Anmelden
 
-> Get a token by providing username and password.
+> Holen Sie sich ein Token, indem Sie Benutzername und Passwort angeben.
 
-**Request:**
+**Bitten:**
 
 ```jsonc
-// POST /api/usr/sign-in
+POST /api/usr/sign-in
 {
-    // this is your user id,
+    Dies ist Ihre Benutzer-ID,
     "id": "test_user",
-    // your password, should be encryped.
+    Ihr Passwort sollte verschlüsselt sein.
     "pwd": "test_only"
 }
 ```
 
-**Response:**
+**Antwort:**
 
 ```jsonc
 {
     "code": 0,
-    "msg": "Success.",
-    // token in JWT format.
+    "msg": "Erfolg.",
+    Token im JWT-Format.
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
 }
 ```
 
-### Checking Token
+### Token prüfen
 
-> Check if the token is valid.
+> Überprüfen Sie, ob das Token gültig ist.
 
-**Request:**
+**Bitten:**
 
 ```jsonc
-// POST /api/usr/token
+POST /api/usr/token
 {
-    // token in JWT format.
+    Token im JWT-Format.
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o"
 }
 ```
 
-**Response:**
+**Antwort:**
 
 ```jsonc
 {
     "code": 0,
-    "msg": "Success."
+    "msg": "Erfolg."
 }
 ```
 
-## Surveys
+## Befragungen
 
-### Create / Update Survey
+### Umfrage erstellen / aktualisieren
 
-> Create a new survey or update an existing survey.
+> Erstellen Sie eine neue Umfrage oder aktualisieren Sie eine vorhandene Umfrage.
 
-**Request:**
+**Bitten:**
 
 ```jsonc
-POST /api/survey/create
+POSTEN /api/Umfrage/erstellen
 {
-    // token in JWT format. (required)
+    Token im JWT-Format. (erforderlich)
     "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6ImNreV90ZXN0IiwicHdkIjoidGVzdF9vbmx5In0.zdKK04qbK01SyslHXynVMqdez-fUufMHDbkr8u-7q5o",
-    // title of the survey. (required)
-    "title": "Test Survey",
-    // description of the survey. (required)
-    "description": "This is a test survey.",
-    // questions of the survey.
-    "questions": [
+    Titel der Umfrage. (erforderlich)
+    "title": "Umfrage testen",
+    Beschreibung der Erhebung. (erforderlich)
+    "description": "Dies ist eine Testumfrage.",
+    Fragen der Umfrage.
+    "Fragen": [
         {
-            // question id, should be unique and integer. (required)
+            Frage-ID, sollte eindeutig und ganzzahlig sein. (erforderlich)
             "id": 0,
-            // question type. (required)
+            Fragetyp. (erforderlich)
             "type": "short_answer",
-            // question options.
-            "validate": {
+            Optionen für Fragen.
+            "validieren": {
                 "min": 1,
                 "max": 2048
             },
-            // question title. (required)
-            "title": "Test Question",
-            // question prompt.
-            "prompt": "This is a test question.",
-            // required / optional
+            Titel der Frage. (erforderlich)
+            "title": "Testfrage",
+            Eingabeaufforderung zur Frage.
+            "prompt": "Dies ist eine Testfrage.",
+            Erforderlich / Optional
             "required": true,
-            "options": {
+            "Optionen": {
                 "optionsData": []
             }
         }
     ],
-    // type of survey, simple / advanced / prompt (required)
-    "type": "simple",
-    // site configs
+    Art der Umfrage, einfach / Erweitert / Prompt (erforderlich)
+    "type": "einfach",
+    Site-Konfigurationen
     "site": {
-        // leave blank for global enabled
-        "domain": ["example.com", "example.org"],
-        // the priority for the prompt window
-        "priority": 1,
-        // the position of the prompt window, bottom_right / bottom_left / bottom_banner
+        Lassen Sie das Feld leer für global aktiviert
+        "Domäne": ["example.com", "example.org"],
+        Die Priorität für das Eingabeaufforderungsfenster
+        "Priorität": 1,
+        die Position des Eingabeaufforderungsfensters, bottom_right / bottom_left / bottom_banner
         "promptWindowPosition": "bottom_right"
     }
 }
 ```
 
-- Response:
+- Antwort:
 
 ```jsonc
 {
     "code": 0,
-    "msg": "Success.",
-    // the unique id of the survey.
-    "uid": "4596870a-07f1-4113-b52d-6aa49dd2d6d9"
+    "msg": "Erfolg.",
+    Die eindeutige ID der Umfrage.
+    "UID": "4596870A-07F1-4113-B52D-6AA49DD2D6D9"
 }
 ```
