@@ -50,6 +50,7 @@ export default defineConfig({
       label: 'English (US)',
       lang: 'en_US',
     },
+/*
     zh_CN: {
       label: '中文(简体)',
       lang: 'zh_CN',
@@ -60,6 +61,7 @@ export default defineConfig({
       lang: 'zh_TW',
       link: '/zh_TW/',
     },
+*/
     contribute: {
       label: 'Contribute to Locales',
       lang: 'en_US',
